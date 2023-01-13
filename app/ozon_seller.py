@@ -107,7 +107,7 @@ class OzonSellerClient:
 
     def send_prices_to_db(self, data):
         """Send data to 'JSON to DB API' to save it in price_table."""
-        json_to_db_url = "https://apps1.ecomru.ru:4439/db/price_table"
+        json_to_db_url = ""
         # json_to_db_url = "http://127.0.0.1:8000/db/price_table"
         chunk_size = 1000
         parts = math.ceil(len(data) / chunk_size)
