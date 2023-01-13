@@ -23,7 +23,7 @@ def save_ozon_prices(creds):
 
 
 def delete_duplicates_from_price_table():
-    url = "https://apps1.ecomru.ru:4439/db/price_table/delete_duplicates"
+    url = ""
     # url = "http://127.0.0.1:8000/db/price_table/delete_duplicates"
     try:
         response = requests.delete(url)
