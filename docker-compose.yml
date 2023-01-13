@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+  ozon_price_parser:
+    container_name: ozon_price_parser
+    build: .
+    restart: always
+    environment:
+      TZ: Europe/Moscow
+      SQLALCHEMY_DB_URL: ${SQLALCHEMY_DB_URL}
+      SSLMODE: ${SSLMODE}
+      TARGET_SESSION_ATTRS: ${TARGET_SESSION_ATTRS}
+    volumes:
+      - /home/get/logs_all/ozon_price_parser:/app/logs
+
+  nginx:
+    container_name: nginx_ozon_price_parser
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - ozon_price_parser
+    restart: always
+    environment:
+      - "TZ=Europe/Moscow"
+    ports:
+#      - 8092:80
+#      - 4442:443
+    volumes:
+      - /home/get/cert:/app/cert
